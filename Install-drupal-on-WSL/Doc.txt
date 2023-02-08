@@ -1,0 +1,120 @@
+Windows Subsystem for Linux:
+       Windows Subsystem for Linux is a feature of Windows that allows developers to run a Linux environment without the need for a separate virtual machine or dual booting.
+
+Pre-requisite
+
+Install WSL : 
+Before installing WSL, we need to make sure that. We enabled WSL on “Turn windows feature on/off”.
+ 
+
+   Goto microsoft store. Search for linux. Here, I am using ubuntu app. Install and open the ubuntu bash.
+
+
+Let’s proceed with the Development setup.
+
+Open ubuntu bash. When you initialize it, it will ask you to create a username and password. Give username and password as you wish.
+
+
+
+
+Install PHP and its extensions:
+Run the below commands to install PHP and the required extensions for drupal.
+
+$ sudo apt-get update
+$ sudo apt-get install -y git php8.1 php8.1-curl php8.1-xml php8.1-mbstring php8.1-gd php8.1-sqlite3 php8.1-mysql php8.1-cli php-xml php8.1-gd libapache2-mod-php8.1 php8.1-mbstring
+Run “php -v” to confirm installation done successfully.
+
+
+Install Composer:
+    Copy and paste these commands to install composer on ubuntu. 
+$ sudo php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+$ sudo php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+$ sudo php composer-setup.php
+$ sudo php -r "unlink('composer-setup.php');"
+To make Composer easier, run the following command to move Composer into your global path:
+$ sudo mv composer.phar /usr/local/bin/composer
+Next, type composer to make sure you installed it successfully.
+
+
+Install Apache:
+Follow the below commands to install Apache
+$ sudo apt update && sudo apt -y upgrade
+$ sudo apt install -y apache2
+$ sudo service apache2 restart 
+If you have wamp or xampp on your windows machine. Make sure, you changed the port number from Listen 80 to Listen 8080 in this file (/etc/apache2/ports.conf).
+Goto http://localhost (or) http://localhost:8080 on your browser and make sure apache is installed successfully.
+
+
+Enable PDO:
+Next, you have to enable PDO support. Please follow below commands.
+$ sudo apt-get install php8.1-mysql
+Goto /etc/php/8.1/apache2/php.ini  file and uncomment "extension=pdo_mysql.so" line.
+Restart your apache.
+$ sudo service apache2 restart
+
+Activate clean url's:
+Next, you have to active clean URL’s. 
+$ sudo a2enmod rewrite
+Goto /etc/apache2/apache2.conf file, edit as "Allowoverride All" for /var/www/ directory and restart apache.
+
+
+
+Install MysQl:
+Next, you have to install mysql server.
+$ sudo apt install -y mysql-server mysql-client
+Start mysql
+$ sudo service mysql start
+Navigate to mysql.
+$ sudo mysql
+Alter root user password.
+$ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '*********';
+After you altered the password. You have to login to MySQL by running the following.
+$ sudo mysql -u root -p
+Give password and login to the MySQL server.
+Next, run below command to improve security of your DB.
+$ sudo mysql_secure_installation
+Provide values as you wish for each question. Make sure, you gave “no” for “Disallow root login remotely?”
+
+
+Go inside mysql and flush the privileges and restart mysql.
+$  FLUSH PRIVILEGES;
+
+Install wget:
+Install wget to download drupal folder from online.
+$ sudo apt install -y wget
+Navigate to the /var/www/html directory and download drupal folder.
+$ sudo wget https://ftp.drupal.org/files/projects/drupal-9.4.9.zip
+
+Install unzip:
+To unzip, Drupal zip folder.
+$ sudo apt install -y unzip
+To unzip
+$  sudo unzip drupal-9.4.9.zip
+
+Permissions:
+Update drupal folder permissions for apache
+$ sudo chown -R www-data:www-data /var/www/html/drupal-9.4.9
+$ sudo chmod -R 755 /var/www/html/drupal-9.4.9
+
+Install Drupal:
+To make sure all installed perfectly. It’s good to restart the system once before installing Drupal.
+Create a new database for drupal installation.
+Goto http://localhost:8080/drupal-9.4.9/ and start proceeding with the Drupal installation.
+When you give data for the database form, make sure you gave a password for MySQL authentication.
+To Access files from WSL:
+Goto you File Explorer and type \\wsl$ to navigate to your wsl folder.
+
+Ubuntu folder is your wsl folder.
+To edit WSL files:
+Open Visual Studio code and download WSL extension.
+
+On ubuntu bash, goto drupal folder and type 
+$ code .
+
+
+It will open the folder on visual studio code.
+
+Enable edit permission now.
+$ sudo chown -Rv saranya drupal-9.4.8
+
+Now, whatever you are updating in VsCode and those changes will be affected on your website.
