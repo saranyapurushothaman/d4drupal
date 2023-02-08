@@ -1,0 +1,39 @@
+id: migrated_content
+label: migrate migrated content
+source:
+  plugin: embedded_data
+  data_rows:
+    - id: 1
+      title: migrate 1
+      desc: migrate 1 content
+      format: migrate 1 content format
+      list: a
+    - id: 2
+      title: migrate 2
+      desc: migrate 2 content
+      format: migrate 2 content format
+      list: b
+    - id: 3
+      title: migrate 3
+      desc: migrate 3 content
+      format: migrate 3 content format
+      list: c
+  constants:
+    text_format: basic_html
+  ids:
+    id:
+      type: integer
+process:
+  title: title
+  body/value: desc
+  body/format: constants/text_format
+  field_formatted/value: format
+  field_formatted/format: constants/text_format
+  field_list: list
+  uid:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:node'
+  bundle: migrated_content
+
