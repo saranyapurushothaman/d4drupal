@@ -1,0 +1,28 @@
+id: migrate_term_simple_way
+label: To migrate terms in simple way
+source:
+  plugin: embedded_data
+  data_rows:
+    - name: voc1
+      desc: voc1 desc
+      parent: NULL
+    - name: voc2
+      desc: voc2 desc
+      parent: NULL
+    - name: voc3
+      desc: voc3 desc
+      parent: 1
+  ids:
+    name:
+      type: string
+process:
+  name: name
+  description: desc
+  parent: parent  
+  vid:
+    plugin: default_value
+    default_value: migration_demo_showcase
+destination:
+  plugin: 'entity:taxonomy_term'
+
+  

@@ -1,0 +1,15 @@
+{
+    "migration": [
+      {
+        "title": "Widget",
+        "description": "Helpful for many things.",
+        "parent": null
+      },
+      {
+        "title": "Sprocket",
+        "description": "Helpful for things needing sprockets.",
+        "parent": 24
+      }
+    ]
+}
+  

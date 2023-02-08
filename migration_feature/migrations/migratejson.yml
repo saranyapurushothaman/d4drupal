@@ -1,0 +1,35 @@
+id: migratejson
+label: import terms from json
+source:
+  plugin: url
+  data_fetcher_plugin: file
+  data_parser_plugin: json
+  urls:
+    - modules/custom/migration_features/files/migratejson.json
+  item_selector: migration
+  fields:
+    -
+      name: title
+      label: "identifier"
+      selector: title
+    -
+      name: description
+      label: "desc of term"
+      selector: description
+    -
+      name: parent
+      label: "parent of term"
+      selector: parent
+  ids:
+    title:
+      type: string
+process:
+  name: title
+  description: description
+  parent: parent  
+  vid:
+    plugin: default_value
+    default_value: migration_demo_showcase
+destination:
+  plugin: 'entity:taxonomy_term'
+    

@@ -1,0 +1,29 @@
+id: migrate_term
+label: migrating terms
+source:
+  plugin: embedded_data
+  data_rows:
+    - name: voc1
+      desc: voc1 desc
+      parent: NULL
+    - name: voc2
+      desc: voc2 desc
+      parent: NULL
+    - name: voc3
+      desc: voc3 desc
+      parent: voc1
+  ids:
+    name:
+      type: string
+process:
+  name: name
+  description: desc
+  parent:
+    plugin: migration_lookup
+    migration: migrate_term
+    source: parent
+  vid:
+    plugin: default_value
+    default_value: migration_demo_showcase
+destination:
+  plugin: 'entity:taxonomy_term'

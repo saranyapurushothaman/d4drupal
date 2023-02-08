@@ -1,0 +1,34 @@
+id: entity_generate
+label: Entity Generate
+source:
+  plugin: embedded_data
+  data_rows:
+    - name: voc1
+      desc: voc1 desc
+      parent: NULL
+    - name: voc2
+      desc: voc2 desc
+      parent: NULL
+    - name: voc3
+      desc: voc3 desc
+      parent: voc4
+  ids:
+    name:
+      type: string
+process:
+  name: name
+  description: desc
+  parent:
+    plugin: entity_generate
+    source: parent
+    value_key: name
+    bundle_key: vid
+    bundle: migration_demo_showcase
+    entity_type: taxonomy_term
+    default_values:
+      description: description
+  vid:
+    plugin: default_value
+    default_value: migration_demo_showcase
+destination:
+  plugin: 'entity:taxonomy_term'
