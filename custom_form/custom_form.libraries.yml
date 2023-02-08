@@ -1,0 +1,4 @@
+customjsform:
+  version: '1.0'
+  js:
+    js/customform.js: {}
