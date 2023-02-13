@@ -1,0 +1,5 @@
+name: Custom Multistep form
+description: Custom Multistep description
+type: module
+core_version_requirement: ^9 | ^10
+version: '1.0'
