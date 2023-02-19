@@ -12,6 +12,7 @@ regions:
   highlighted: Highlighted
   breadcrumb: Breadcrumb
   social: Social Bar
+  heading: 'Heading'
   content_above: Content Above
   content: Content
   sidebar: 'Sidebar'
