@@ -1,0 +1,5 @@
+threed_render:
+  version: 1.x
+  header: true
+  js:
+    https://aframe.io/releases/1.4.0/aframe.min.js: {}

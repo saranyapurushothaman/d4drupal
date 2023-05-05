@@ -1,0 +1,47 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\File\FileSystemInterface;
+
+/**
+ * Implements hook_entity_insert().
+ */
+
+ function threed_render_entity_insert(EntityInterface $entity) {
+    if ($entity->getEntityTypeId() == "node") {
+        if (!empty($entity->get("field_3d_render_file")->referencedEntities())) {
+            $zipuri = $entity->get("field_3d_render_file")->referencedEntities()[0]->createFileUrl(FALSE);
+            $directory = "temporary://3dmodels";
+            // If not exists, create.
+            if (!file_exists($directory)) {
+                mkdir($directory);
+            }
+            $parsed_url = parse_url($zipuri);
+            $file_system = \Drupal::service('file_system');
+            $destination = $directory . '/' . $file_system->basename($parsed_url['path']);
+            $tzipuri = system_retrieve_file($zipuri, $destination, FALSE, FileSystemInterface::EXISTS_REPLACE);
+            $publicuri = "public://3dmodels/" . $entity->getEntityTypeId() . "/" . $entity->id();
+            if (!file_exists($publicuri)) {
+                mkdir($publicuri);
+            }
+            // Archiver is to extract zip file.
+            $archiver = \Drupal::service('plugin.manager.archiver')->getInstance([
+                'filepath' => $tzipuri,
+            ]);
+            $archiver->extract($publicuri);
+        }
+    }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+
+ function threed_render_theme($existing, $type, $theme, $path) {
+    return [
+        'threed_render' => [
+            'variables' => ['path' => ""],
+        ],
+    ];
+}

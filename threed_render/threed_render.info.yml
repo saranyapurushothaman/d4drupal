@@ -1,0 +1,4 @@
+name: Render ThreeD Object
+description: Render 3D object with file field
+type: module
+core_version_requirement: ^9 || ^10

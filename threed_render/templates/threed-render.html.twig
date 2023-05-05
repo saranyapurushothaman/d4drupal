@@ -1,0 +1,8 @@
+{{ attach_library('threed_render/threed_render') }}
+<a-scene embedded style="height:500px;width:500px">
+    <a-assets>
+        <a-asset-item id="tree" src={{ path }}></a-asset-item>
+    </a-assets>
+    <a-gltf-model src={{ path }} position="0 0 -3" scale="2 2 2"></a-gltf-model>
+</a-scene>
+
