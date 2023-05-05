@@ -1,0 +1,6 @@
+services:
+  custom_events_user_login:
+    class: '\Drupal\custom_events\EventSubscriber\UserLoginSubscriber'
+    tags:
+      - { name: 'event_subscriber' }
+

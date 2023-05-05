@@ -1,0 +1,4 @@
+name: custom service
+description: Custom Service
+type: module
+core_version_requirement: ^9 || ^10

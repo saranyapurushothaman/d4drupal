@@ -1,0 +1,4 @@
+services:
+  custom_service:
+    class: Drupal\custom_service\CustomService
+    arguments: ['@current_user']

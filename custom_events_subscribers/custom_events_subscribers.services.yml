@@ -1,0 +1,5 @@
+services:
+  custom_events_subscriber:
+    class: '\Drupal\custom_events_subscribers\EventSubscriber\CustomConfigEventsSubscriber'
+    tags:
+      - { name: 'event_subscriber' }
