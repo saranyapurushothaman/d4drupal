@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_form_alter().
+ */
+
+ function custom_config_form_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    if ($form_id == "node_article_edit_form") {
+      $helptext = \Drupal::configFactory()->getEditable("custom_config_form.settings")->get("helptext");
+      $node = \Drupal::routeMatch()->getParameter("node"); //type: node object
+      $token_service = \Drupal::token();
+      $hlptxt = $token_service->replace($helptext, ['node'=>$node], ['clear'=>TRUE]);
+      $form['#prefix'] = "<span>" . $hlptxt . "</span>";
+    }
+ }
+

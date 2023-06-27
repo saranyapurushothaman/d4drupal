@@ -1,0 +1,4 @@
+name: Custom Config form
+description: Custom Config form creation
+core_version_requirement: ^8.8 || ^9 || ^10
+type: module
