@@ -1,0 +1,11 @@
+dynamic_title.dynamicdemo:
+  path: '/controller/{node}/title'
+  defaults:
+    _controller: '\Drupal\dynamic_title\Controller\ControllerPage::NodeData'
+    _title_callback: '\Drupal\dynamic_title\Controller\ControllerPage::PageTitle'
+  requirements:
+    _permission: "access content"
+  options:
+    parameters:
+      node:
+        type: entity:node
