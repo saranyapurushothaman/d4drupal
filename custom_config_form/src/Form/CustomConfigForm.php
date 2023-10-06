@@ -10,7 +10,7 @@ class CustomConfigForm extends ConfigFormBase {
     /**
      * Settings Variable.
      */
-    Const CONFIGNAME = "custom_config_form.settings";
+    Const CONFIGNAME = "custom_config_form.setting";
 
     /**
      * {@inheritdoc}
@@ -28,7 +28,7 @@ class CustomConfigForm extends ConfigFormBase {
             static::CONFIGNAME,
         ];
     }
-    
+
     /**
      * {@inheritdoc}
      */
@@ -45,7 +45,22 @@ class CustomConfigForm extends ConfigFormBase {
             '#title' => 'Last Name',
             '#default_value' => $config->get("lastname"),
         ];
-
+        $targetids = $config->get("contents");
+        $contents = [];
+        foreach ($targetids as $k => $value) {
+            $contents[] = \Drupal::service("entity_type.manager")->getStorage('node')->load($value['target_id']);
+        }
+        $form['contents'] = [
+            '#type' => "entity_autocomplete",
+            '#title' => "Nodes",
+            '#target_type' => "node",
+            '#selection_settings' => [
+                'target_bundles' => ["page", "article"],
+            ],
+            '#tags' => TRUE,
+            '#description' => "Contains node reference",
+            '#default_value' => $contents,
+        ];
         return Parent::buildForm($form, $form_state);
     }
 
@@ -56,6 +71,7 @@ class CustomConfigForm extends ConfigFormBase {
         $config = $this->config(static::CONFIGNAME);
         $config->set("firstname", $form_state->getValue('firstname'));
         $config->set("lastname", $form_state->getValue('lastname'));
+        $config->set("contents", $form_state->getValue("contents"));
         $config->save();
     }
 
