@@ -1,0 +1,4 @@
+name: Custom Batch Process
+description: Example of Custom batch Process
+core_version_requirement: ^9 || ^10
+type: module

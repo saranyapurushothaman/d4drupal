@@ -1,0 +1,9 @@
+batch.process:
+  path: '/admin/config/batch-form'
+  defaults:
+    _form: '\Drupal\custom_batch\Form\CustomBatchProcess'
+    _title: 'Configuration Form with batch process'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE
