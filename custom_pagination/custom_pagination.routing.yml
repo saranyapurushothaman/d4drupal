@@ -1,0 +1,8 @@
+custom_pagination.example:
+  path: '/custom-pagination/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\custom_pagination\Controller\CustomPaginationController::build'
+  requirements:
+    _permission: 'access content'
+
