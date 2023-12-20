@@ -1,0 +1,4 @@
+services:
+  module_with_service.utilityservice:
+    class: Drupal\module_with_service\UtilityServices
+    arguments: ['@current_user']

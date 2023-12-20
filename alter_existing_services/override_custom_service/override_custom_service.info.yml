@@ -1,0 +1,4 @@
+name: override existing service example
+description: override existing service example
+type: module
+core_version_requirement: ^9 || ^10

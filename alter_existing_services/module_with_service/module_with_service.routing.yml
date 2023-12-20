@@ -1,0 +1,7 @@
+# This route is to a page explaining the module.
+module_with_service.description:
+  path: '/print/message'
+  defaults:
+    _controller: '\Drupal\module_with_service\Controller\PrintData::message'
+  requirements:
+    _permission: 'access content'

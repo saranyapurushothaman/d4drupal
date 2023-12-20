@@ -1,0 +1,4 @@
+name: Module with service
+description: module with service
+core_version_requirement: ^9 || ^10
+type: module
