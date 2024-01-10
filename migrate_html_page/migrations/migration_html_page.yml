@@ -1,0 +1,46 @@
+id: migration_html_page
+name: migration from html page
+group: migrating html
+source:
+  plugin: url
+  urls:
+    - http://localhost/drupal10migrationsite/web/modules/custom/migrate_html_page/html/sample.html
+  data_fetcher_plugin: http
+  data_parser_plugin: html5
+  fields:
+    - name: content_id
+      label: 'Content ID'
+      selector: '//head/meta[@property="post_id"]/@content'
+    - name: title
+      label: 'Content Title'
+      selector: '//title/text()'
+    - name: content
+      label: 'Content'
+      selector: '//body/*'
+  ids:
+    content_id:
+      type: string
+process:
+  title: title
+  body/value:
+    -
+      plugin: dom
+      method: import
+      source: 'content'
+    -
+      plugin: dom
+      method: export
+  body/format: full_html
+  uid:
+    plugin: default_value
+    default_value: 1
+  type:
+    plugin: default_value
+    default_value: article
+  path/alias:
+    plugin: default_value
+    default_value: /content/html-5-
+destination:
+  plugin: 'entity:node'
+
+
