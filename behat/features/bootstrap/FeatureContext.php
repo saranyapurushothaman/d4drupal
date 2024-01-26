@@ -19,12 +19,12 @@ class FeatureContext extends RawDrupalContext
     }
 
     /**
-     * @Given I should receive 200 status code
+     * @Given I should receive :code status code
      */
-    public function iShouldReceiveXxStatusCode2()
+    public function iShouldReceiveXxStatusCode2($code)
     {
         $response_code = (string) $this->getSession()->getStatusCode();
-        if ($response_code != 200) {
+        if ($response_code != $code) {
             throw new \Exception("Access denied");
         }
     }
