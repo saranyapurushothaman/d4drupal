@@ -1,0 +1,8 @@
+<article>
+	<div class="body">
+		{{ content.body }}
+	</div>
+	<div class="tags">
+		{{ include('custom_sdc:links', { link: content.field_tags.0['#url']|render, text: content.field_tags.0['#title'] })}}
+	</div>
+</article>
