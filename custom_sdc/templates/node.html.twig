@@ -3,6 +3,16 @@
 		{{ content.body }}
 	</div>
 	<div class="tags">
-		{{ include('custom_sdc:links', { link: content.field_tags.0['#url']|render, text: content.field_tags.0['#title'] })}}
+		{% embed 'custom_sdc:links' with {
+			link: content.field_tags.0['#url']|render,
+			text: content.field_tags.0['#title']
+		} %}
+			{% block link_content %}
+				<a class="red" href="{{ link }}">
+					{{ text }}
+				</a>
+			{% endblock %}
+		{% endembed %}
+
 	</div>
 </article>

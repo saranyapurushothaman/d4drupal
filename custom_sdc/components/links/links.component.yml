@@ -1,0 +1,18 @@
+$schema: https://git.drupalcode.org/project/sdc/-/raw/1.x/src/metadata.schema.json
+name: links
+props:
+  type: object
+  properties:
+    link:
+      type: string
+      title: Link
+      description: link of the tag
+    text:
+      type: string
+      title: tag
+      description: tag name
+slots:
+  link_content:
+    title: Tags Link
+    description: Print tags with link
+
