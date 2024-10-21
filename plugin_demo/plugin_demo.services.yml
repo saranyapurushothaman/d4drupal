@@ -1,0 +1,4 @@
+services:
+  plugin.manager.blockdata:
+    class: Drupal\plugin_demo\BlockDataManager
+    parent: default_plugin_manager

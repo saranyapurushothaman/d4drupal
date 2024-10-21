@@ -1,0 +1,6 @@
+name: Plugin demo
+description: Plugin demo with example
+type: module
+core_version_requirement: ^9 || ^10
+version: 1.x
+
