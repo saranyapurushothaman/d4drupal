@@ -1,0 +1,8 @@
+<?php
+
+/**
+  * Implements hook_entity_type_build().
+  */
+function custom_form_modes_entity_type_build(array &$entity_types) {
+  $entity_types['node']->setFormClass('article_form', 'Drupal\node\NodeForm');
+}

@@ -1,0 +1,12 @@
+entity.node.article_form:
+  path: '/node/{node}/form'
+  defaults:
+    _controller: '\Drupal\custom_form_modes\Controller\ArticleForm::form'
+    _title: 'Render Article form'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE
+    parameters:
+      node:
+        type: entity:node
