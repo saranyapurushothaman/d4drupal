@@ -1,0 +1,11 @@
+entity.node.article_view:
+  path: '/node/{node}/view'
+  defaults:
+    _controller: '\Drupal\custom_view_modes\Controller\Articleview::view'
+    _title: 'Render Article view'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node

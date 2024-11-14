@@ -1,0 +1,5 @@
+entity.node.article_view:
+  title: 'Article view'
+  route_name: entity.node.article_view
+  base_route: entity.node.canonical
+  weight: 11

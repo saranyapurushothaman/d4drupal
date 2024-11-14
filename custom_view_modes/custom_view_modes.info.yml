@@ -1,0 +1,5 @@
+name: custom view modes
+description: Demo for custom view modes
+type: module
+core_version_requirement: ^9 || ^10
+version: 1.x
