@@ -6,7 +6,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
 
 /**
- * An Harvest plugin mapping.
+ * An Article form controller.
  */
 class ArticleForm extends ControllerBase {
 
