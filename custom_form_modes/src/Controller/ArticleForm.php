@@ -21,6 +21,7 @@ class ArticleForm extends ControllerBase {
    * return []
    */
   public function form(Node $node) {
+    // Please, use dependency injection.
     $form = \Drupal::service('entity.form_builder')->getForm($node, 'article_form');
     return $form;
   }
