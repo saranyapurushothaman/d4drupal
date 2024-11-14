@@ -6,7 +6,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\Entity\Node;
 
 /**
- * An Harvest plugin mapping.
+ * An Article form controller.
  */
 class ArticleForm extends ControllerBase {
 
@@ -21,6 +21,7 @@ class ArticleForm extends ControllerBase {
    * return []
    */
   public function form(Node $node) {
+    // Please, use dependency injection.
     $form = \Drupal::service('entity.form_builder')->getForm($node, 'article_form');
     return $form;
   }
