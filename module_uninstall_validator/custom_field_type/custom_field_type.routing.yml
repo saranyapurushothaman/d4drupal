@@ -1,0 +1,7 @@
+custom.field.uninstall:
+  path: '/admin/field/uninstall'
+  defaults:
+    _form: '\Drupal\custom_field_type\Form\RemoveFieldDependency'
+    _title: 'Remove Custom Field'
+  requirements:
+    _permission: 'admininster content'

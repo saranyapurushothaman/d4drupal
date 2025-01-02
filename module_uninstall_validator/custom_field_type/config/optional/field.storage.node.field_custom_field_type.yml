@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - custom_field_type
+    - node
+id: node.field_custom_field_type
+field_name: field_custom_field_type
+entity_type: node
+type: custom_field_type
+settings:
+  length: '255'
+module: custom_field_type
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

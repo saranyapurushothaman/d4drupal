@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_custom_field_type
+    - node.type.article
+  module:
+    - custom_field_type
+id: node.article.field_custom_field_type
+field_name: field_custom_field_type
+entity_type: node
+bundle: article
+label: 'custom field type'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings:
+  moreinfo: 'More info default value'
+field_type: custom_field_type

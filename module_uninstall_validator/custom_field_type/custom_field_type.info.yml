@@ -1,0 +1,5 @@
+name: custom field type
+description: custom field type desc
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+core: 8.x
