@@ -1,0 +1,6 @@
+langcode: en
+status: true
+id: update_node_title
+label: 'Update Node Title'
+type: node
+plugin: update_node_title

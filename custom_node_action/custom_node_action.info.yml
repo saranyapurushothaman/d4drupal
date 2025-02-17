@@ -1,0 +1,6 @@
+name: 'Custom Node Action'
+type: module
+description: 'Provides an action to update taxonomy terms in nodes dynamically.'
+core_version_requirement: ^10
+package: Custom
+

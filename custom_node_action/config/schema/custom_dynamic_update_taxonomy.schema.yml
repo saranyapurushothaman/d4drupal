@@ -1,0 +1,7 @@
+custom_dynamic_update_taxonomy.configuration.update_node_terms:
+  type: mapping
+  label: "Configuration for 'custom_dynamic_update_taxonomy' action"
+  mapping:
+    selected_terms:
+      type: integer
+      label: Selected terms
