@@ -1,0 +1,42 @@
+version: "3"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqldatabase
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+  drupalcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: drupalcontainer
+    ports:
+      - 8080:80 # host port.
+    links:
+      - mysql
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=root
+  varnish:
+    image: varnish:latest
+    container_name: varnish
+    ports:
+      - "8081:80" # host port.
+      - "6082:6082" # management interface.
+    volumes:
+      - ./default.vcl:/etc/varnish/default.vcl
+      - ./varnish-data:/var/lib/varnish #stores all cached data.
+      - ./varnish-secret.txt:/etc/varnish/secret.txt # for authentication.
+    environment:
+      - VARNISH_SIZE=2G
+    cap_add:
+      - IPC_LOCK # Allows the container to lock memory, which is useful for performance.
+    ulimits:
+      memlock: # To lock memory unlimited.
+        soft: -1
+        hard: -1
+    command:
+      > # Uses malloc as the storage backend with 256 MB allocated for cache objects.
+      varnishd -F -f /etc/varnish/default.vcl -a :80 -T :6082 -S /etc/varnish/secret.txt -s malloc,256m
+    depends_on:
+      - drupalcontainer
